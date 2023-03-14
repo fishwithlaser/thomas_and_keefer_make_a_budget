@@ -1,9 +1,6 @@
-from sqlalchemy import create_engine
 from sqlalchemy_utils import database_exists, create_database
-from sqlalchemy.orm import sessionmaker, declarative_base
-import sqlite3
-
-from .main import engine
+from sqlalchemy.exc import IntegrityError
+from .main import engine, Base
 
 def create_database() -> None:
 
@@ -14,4 +11,13 @@ def create_database() -> None:
 if __name__ == "__main__":
     create_database()
     from . import frequencies
-    frequencies.populate_recursion()
+    from . import expenses
+    
+    expenses.Expenses
+    Base.metadata.create_all(engine)
+
+    #dear thomas (thomas); i should check to see if one exists not try and fail
+    try:
+        frequencies.populate_recursion()
+    except IntegrityError:
+        pass

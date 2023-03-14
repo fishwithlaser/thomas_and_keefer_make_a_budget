@@ -1,16 +1,18 @@
-from . import Base
 from datetime import date
 from decimal import Decimal
-from sqlalchemy import Column
-from sqlalchemy.types import Float, String, Date, Decimal
+from sqlalchemy.types import String, Date, DECIMAL
+from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy import ForeignKey
+
+from .common import Base
 
 class Expenses(Base):
 
     __tablename__ = 'expenses'
-
-    Id: mapped_column[int] = Mapped(primary_key=True)
-    Amount: mapped_column[Decimal] = Mapped(Decimal)
-    Recursion: mapped_column[str] = Mapped(ForeignKey("recursion.name"), nullable=False)
-    Description: mapped_column[str] = Mapped(String)
-    TransactionDate: mapped_column[date] = Mapped(Date)   
+    Id: Mapped[int] = mapped_column(primary_key=True)
+    Name: Mapped[str] = mapped_column(String)
+    Amount: Mapped[Decimal] = mapped_column(DECIMAL)
+    Recursion: Mapped[str] = mapped_column(ForeignKey("recursion.Name"), nullable=False)
+    Description: Mapped[str] = mapped_column(String)
+    TransactionDate: Mapped[date] = mapped_column(Date)   
 

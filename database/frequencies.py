@@ -1,7 +1,7 @@
 from sqlalchemy.types import String, REAL
 from sqlalchemy.orm import mapped_column, Mapped, Session
 
-from .main import Base
+from .common import Base
 
 class Recursion(Base):
 

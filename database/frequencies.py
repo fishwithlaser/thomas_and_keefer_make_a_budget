@@ -19,7 +19,7 @@ RECURSION_FREQUENCIES: tuple[str, float] = [
 ]
 
 def populate_recursion() -> None:
-    from database.main import engine
+    from database.common import engine
     session = Session(engine)
     for name_frequency_tuple in RECURSION_FREQUENCIES:
         name, frequency = name_frequency_tuple

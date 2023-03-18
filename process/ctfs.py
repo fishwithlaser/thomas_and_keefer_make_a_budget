@@ -2,11 +2,12 @@ from sqlalchemy.orm import Session
 from typing import Iterator
 from datetime import datetime
 from database.transactions import Transactions
-from database.main import engine
+from database.common import engine
 
 
 
 def add_ctfs_to_database(csv_iterator: Iterator) -> None:
+    #gotta make sure i'm only adding unique
     _map = {
         'ref': 0,
         'date': 1,

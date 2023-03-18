@@ -1,5 +1,6 @@
 import random
-
+off = '\033[0;0m'
+fun_col = '\033[48;5;236m'
 def lstr(str_:str, length=10) -> str:
     str_ = str(str_)
     return str_[0:length] + " " * (length - len(str_))

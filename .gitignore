@@ -1,3 +1,7 @@
-.inputs/*.csv
-.outputs/*.csv
+.inputs/*
+.outputs/*
 .venv/*
+**__pycache__**
+.DS_Store
+.ipynb_checkpoints
+budget_database.bd

@@ -13,7 +13,7 @@ class Transactions(Base):
     def __repr__(self) -> str:
         return f'{lstr(self.Name, 10)} - {lstr(self.Amount)} - {lstr(self.Category)}'
 
-    __tablename__ = 'Transactions'
+    __tablename__ = 'transactions'
     Id: Mapped[int] = mapped_column(primary_key=True)
     TransactionId: Mapped[str] = mapped_column(String)
     Name: Mapped[str] = mapped_column(String)
@@ -21,5 +21,5 @@ class Transactions(Base):
     Recursion: Mapped[str] = mapped_column(ForeignKey(Recursion.Name), nullable=True, default=None)
     Description: Mapped[str] = mapped_column(String, nullable=True)
     TransactionDate: Mapped[date] = mapped_column(Date)
-    Category: Mapped[str] = mapped_column(String)
+    Category: Mapped[str or None] = mapped_column(String, nullable=True)
 
